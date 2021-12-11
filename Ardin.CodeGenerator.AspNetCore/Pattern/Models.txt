@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text.Json.Serialization;
+
 namespace BLOXNameSpace.Data
 {
     [System.ComponentModel.DataAnnotations.Schema.Table("BLOXTableName")]
