@@ -1,5 +1,5 @@
 ﻿using System;
-namespace BLOXNameSpace.BO
+namespace BLOXNameSpace.Data
 {
     [System.ComponentModel.DataAnnotations.Schema.Table("BLOXTableName")]
     public partial class BLOXTableNameEO : IBaseBO
@@ -9,6 +9,7 @@ namespace BLOXNameSpace.BO
 		</BLOX::Loop::BLOXColumns>
 
         [System.ComponentModel.DataAnnotations.Schema.NotMapped]
+        [JsonIgnore]
         public Guid ID
         {
             get
@@ -21,30 +22,35 @@ namespace BLOXNameSpace.BO
             }
         }
 
+        [JsonIgnore]
         public Guid InsertUserId
         {
             get;
             set;
         }
 
+        [JsonIgnore]
         public DateTime InsertDateTime
         {
             get;
             set;
         }
 
+        [JsonIgnore]
         public Guid UpdateUserId
         {
             get;
             set;
         }
 
+        [JsonIgnore]
         public DateTime UpdateDateTime
         {
             get;
             set;
         }
         [System.ComponentModel.DataAnnotations.Schema.NotMapped]
+        [JsonIgnore]
         public byte Version
         {
             get;

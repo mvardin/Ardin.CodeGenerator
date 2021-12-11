@@ -25,44 +25,16 @@ namespace Ardin.CodeGenerator.AspNetCore
             InitializeComponent();
             loadDataFromHistory();
         }
-
-        private void loadDataFromHistory()
-        {
-            txtNamespace.Text = ConfigurationManager.AppSettings["Namespace"];
-            txtPrefix.Text = ConfigurationManager.AppSettings["Prefix"];
-            txtConnectionString.Text = ConfigurationManager.AppSettings["ConnectionString"];
-        }
         #endregion
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog folder = new FolderBrowserDialog();
-            if (folder.ShowDialog() == DialogResult.OK)
-            {
-                File.WriteAllText(Path.Combine(folder.SelectedPath, "IBase.cs"), generateIBase());
-                File.WriteAllText(Path.Combine(folder.SelectedPath, txtPrefix.Text + "Context.cs"), generateContext());
-                File.WriteAllText(Path.Combine(folder.SelectedPath, cbTables.Text + ".cs"), generateEO());
-                SaveToHistory();
-                MessageBox.Show("Done ;)");
-            }
+            File.WriteAllText(Path.Combine(txtModelPath.Text, "IBase.cs"), generateIBase());
+            File.WriteAllText(Path.Combine(txtModelPath.Text, txtPrefix.Text + "Context.cs"), generateContext());
+            File.WriteAllText(Path.Combine(txtModelPath.Text, cbTables.Text + ".cs"), generateEO());
+            SaveToHistory();
+            MessageBox.Show("Done ;)");
         }
-        private void SaveToHistory()
-        {
-            System.Configuration.Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            config.AppSettings.Settings.Remove("Namespace");
-            config.AppSettings.Settings.Add("Namespace", txtNamespace.Text);
-
-            config.AppSettings.Settings.Remove("Prefix");
-            config.AppSettings.Settings.Add("Prefix", txtPrefix.Text);
-
-            config.AppSettings.Settings.Remove("ConnectionString");
-            config.AppSettings.Settings.Add("ConnectionString", txtConnectionString.Text);
-
-            config.Save(ConfigurationSaveMode.Modified);
-            ConfigurationManager.RefreshSection("appSettings");
-            config.Save(ConfigurationSaveMode.Minimal);
-        }
-
         private void btnGetTables_Click(object sender, EventArgs e)
         {
             try
@@ -88,7 +60,32 @@ namespace Ardin.CodeGenerator.AspNetCore
                 MessageBox.Show(getExceptionMessage(ex));
             }
         }
+        private void loadDataFromHistory()
+        {
+            txtNamespace.Text = ConfigurationManager.AppSettings["Namespace"];
+            txtPrefix.Text = ConfigurationManager.AppSettings["Prefix"];
+            txtConnectionString.Text = ConfigurationManager.AppSettings["ConnectionString"];
+            txtModelPath.Text = ConfigurationManager.AppSettings["ModelPath"];
+        }
+        private void SaveToHistory()
+        {
+            System.Configuration.Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            config.AppSettings.Settings.Remove("Namespace");
+            config.AppSettings.Settings.Add("Namespace", txtNamespace.Text);
 
+            config.AppSettings.Settings.Remove("Prefix");
+            config.AppSettings.Settings.Add("Prefix", txtPrefix.Text);
+
+            config.AppSettings.Settings.Remove("ConnectionString");
+            config.AppSettings.Settings.Add("ConnectionString", txtConnectionString.Text);
+
+            config.AppSettings.Settings.Remove("ModelPath");
+            config.AppSettings.Settings.Add("ModelPath", txtModelPath.Text);
+
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
+            config.Save(ConfigurationSaveMode.Minimal);
+        }
         private string generateEO()
         {
             string path = Application.StartupPath + "\\Pattern\\Models.txt";
@@ -302,6 +299,13 @@ namespace Ardin.CodeGenerator.AspNetCore
             }
             return message;
         }
-
+        private void txtModelPath_MouseClick(object sender, MouseEventArgs e)
+        {
+            FolderBrowserDialog folder = new FolderBrowserDialog();
+            if (folder.ShowDialog() == DialogResult.OK)
+            {
+                txtModelPath.Text = folder.SelectedPath;
+            }
+        }
     }
 }

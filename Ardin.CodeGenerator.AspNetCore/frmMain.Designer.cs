@@ -39,6 +39,8 @@ namespace Ardin.CodeGenerator.AspNetCore
             this.cbTables = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnGetTables = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtModelPath = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -93,7 +95,7 @@ namespace Ardin.CodeGenerator.AspNetCore
             // 
             // btnGenerate
             // 
-            this.btnGenerate.Location = new System.Drawing.Point(237, 232);
+            this.btnGenerate.Location = new System.Drawing.Point(226, 257);
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(205, 50);
             this.btnGenerate.TabIndex = 2;
@@ -128,20 +130,40 @@ namespace Ardin.CodeGenerator.AspNetCore
             this.btnGetTables.UseVisualStyleBackColor = true;
             this.btnGetTables.Click += new System.EventHandler(this.btnGetTables_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(22, 221);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(71, 15);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Model Path:";
+            // 
+            // txtModelPath
+            // 
+            this.txtModelPath.Location = new System.Drawing.Point(134, 218);
+            this.txtModelPath.Name = "txtModelPath";
+            this.txtModelPath.Size = new System.Drawing.Size(463, 23);
+            this.txtModelPath.TabIndex = 1;
+            this.txtModelPath.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtModelPath_MouseClick);
+            // 
             // frmMain
             // 
+            this.AcceptButton = this.btnGenerate;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(645, 309);
+            this.ClientSize = new System.Drawing.Size(645, 319);
             this.Controls.Add(this.cbTables);
             this.Controls.Add(this.btnGetTables);
             this.Controls.Add(this.btnGenerate);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.txtConnectionString);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtPrefix);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtModelPath);
             this.Controls.Add(this.txtNamespace);
             this.Controls.Add(this.label1);
             this.Name = "frmMain";
@@ -163,6 +185,8 @@ namespace Ardin.CodeGenerator.AspNetCore
         private System.Windows.Forms.ComboBox cbTables;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnGetTables;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtModelPath;
     }
 }
 

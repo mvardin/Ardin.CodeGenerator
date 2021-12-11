@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BLOXNameSpace.BO
+namespace BLOXNameSpace.Data
 {
     public interface IBaseBO
     {
