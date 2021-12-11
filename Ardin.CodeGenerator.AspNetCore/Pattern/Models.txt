@@ -1,0 +1,54 @@
+﻿using System;
+namespace BLOXNameSpace.BO
+{
+    [System.ComponentModel.DataAnnotations.Schema.Table("BLOXTableName")]
+    public partial class BLOXTableNameEO : IBaseBO
+    {
+        <BLOX::Loop::BLOXColumns>
+        public BLOXColumnType BLOXColumnName { get; set; }
+		</BLOX::Loop::BLOXColumns>
+
+        [System.ComponentModel.DataAnnotations.Schema.NotMapped]
+        public Guid ID
+        {
+            get
+            {
+                return this.BLOXTableNameId;
+            }
+            set
+            {
+                this.BLOXTableNameId = value;
+            }
+        }
+
+        public Guid InsertUserId
+        {
+            get;
+            set;
+        }
+
+        public DateTime InsertDateTime
+        {
+            get;
+            set;
+        }
+
+        public Guid UpdateUserId
+        {
+            get;
+            set;
+        }
+
+        public DateTime UpdateDateTime
+        {
+            get;
+            set;
+        }
+        [System.ComponentModel.DataAnnotations.Schema.NotMapped]
+        public byte Version
+        {
+            get;
+            set;
+        }
+    }
+}
