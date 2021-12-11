@@ -107,7 +107,8 @@ namespace Ardin.CodeGenerator.AspNetCore
                     {
                         string annotation = "[System.ComponentModel.DataAnnotations.Key]";
                         columnsManipulates += annotation + "\r\n";
-                        columnsManipulates += loop.Replace("BLOXColumnName", column.Key).Replace("BLOXColumnType", GetClrType(column.Value));
+                        columnsManipulates += "[DefaultValue(\"\")]"+ "\r\n";
+                        columnsManipulates += (loop.Replace("BLOXColumnName", column.Key).Replace("BLOXColumnType", GetClrType(column.Value)) + " = Guid.Empty;");
                     }
                     else
                     {

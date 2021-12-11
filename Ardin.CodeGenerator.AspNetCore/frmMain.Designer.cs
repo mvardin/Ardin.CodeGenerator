@@ -57,7 +57,7 @@ namespace Ardin.CodeGenerator.AspNetCore
             this.txtNamespace.Location = new System.Drawing.Point(134, 21);
             this.txtNamespace.Name = "txtNamespace";
             this.txtNamespace.Size = new System.Drawing.Size(463, 23);
-            this.txtNamespace.TabIndex = 1;
+            this.txtNamespace.TabIndex = 0;
             // 
             // label2
             // 
@@ -89,7 +89,7 @@ namespace Ardin.CodeGenerator.AspNetCore
             this.txtConnectionString.Location = new System.Drawing.Point(134, 106);
             this.txtConnectionString.Name = "txtConnectionString";
             this.txtConnectionString.Size = new System.Drawing.Size(463, 23);
-            this.txtConnectionString.TabIndex = 1;
+            this.txtConnectionString.TabIndex = 2;
             this.txtConnectionString.Text = "data source=.;initial catalog=database;user id=userid;password=password;MultipleA" +
     "ctiveResultSets=True";
             // 
@@ -98,7 +98,7 @@ namespace Ardin.CodeGenerator.AspNetCore
             this.btnGenerate.Location = new System.Drawing.Point(226, 257);
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(205, 50);
-            this.btnGenerate.TabIndex = 2;
+            this.btnGenerate.TabIndex = 6;
             this.btnGenerate.Text = "Generate";
             this.btnGenerate.UseVisualStyleBackColor = true;
             this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
@@ -109,7 +109,7 @@ namespace Ardin.CodeGenerator.AspNetCore
             this.cbTables.Location = new System.Drawing.Point(134, 174);
             this.cbTables.Name = "cbTables";
             this.cbTables.Size = new System.Drawing.Size(463, 23);
-            this.cbTables.TabIndex = 3;
+            this.cbTables.TabIndex = 4;
             // 
             // label4
             // 
@@ -125,7 +125,7 @@ namespace Ardin.CodeGenerator.AspNetCore
             this.btnGetTables.Location = new System.Drawing.Point(134, 135);
             this.btnGetTables.Name = "btnGetTables";
             this.btnGetTables.Size = new System.Drawing.Size(463, 26);
-            this.btnGetTables.TabIndex = 2;
+            this.btnGetTables.TabIndex = 3;
             this.btnGetTables.Text = "Get tables";
             this.btnGetTables.UseVisualStyleBackColor = true;
             this.btnGetTables.Click += new System.EventHandler(this.btnGetTables_Click);
@@ -144,7 +144,7 @@ namespace Ardin.CodeGenerator.AspNetCore
             this.txtModelPath.Location = new System.Drawing.Point(134, 218);
             this.txtModelPath.Name = "txtModelPath";
             this.txtModelPath.Size = new System.Drawing.Size(463, 23);
-            this.txtModelPath.TabIndex = 1;
+            this.txtModelPath.TabIndex = 5;
             this.txtModelPath.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtModelPath_MouseClick);
             // 
             // frmMain
