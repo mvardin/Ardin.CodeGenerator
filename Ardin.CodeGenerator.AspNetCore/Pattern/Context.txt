@@ -9,18 +9,21 @@ namespace BLOXNameSpace.Data
         public BLOXPrefixContext(DbContextOptions<BLOXPrefixContext> options) : base(options)
         {
         }
-        public void UpdateBaseInfo<TEntity>(TEntity entity, Guid userId)
-        {
-            if ((entity as IBaseBO).ID == Guid.Empty)
+       if ((entity as IBaseBO).ID == Guid.Empty)
             {
-                (entity as IBaseBO).InsertUserId = userId;
+                (entity as IBaseBO).InsertUserAccountId = userId;
                 (entity as IBaseBO).InsertDateTime = DateTime.Now;
+                this.Add(entity);
+            }
+            else
+            {
+                this.Update(entity);
             }
             if ((entity as IBaseBO).InsertDateTime < DateTime.Now.AddYears(-50))
                 (entity as IBaseBO).InsertDateTime = DateTime.Now;
-            (entity as IBaseBO).UpdateUserId = userId;
+            (entity as IBaseBO).UpdateUserAccountId = userId;
             (entity as IBaseBO).UpdateDateTime = DateTime.Now;
-        }
+            this.SaveChanges();
         <BLOX::Loop::TableForContext>
         public virtual DbSet<BLOXTableNameEO> BLOXTableNames { get; set; }
 		</BLOX::Loop::TableForContext>
