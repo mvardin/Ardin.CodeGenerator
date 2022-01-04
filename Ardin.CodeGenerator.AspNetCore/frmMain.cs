@@ -98,21 +98,20 @@ namespace Ardin.CodeGenerator.AspNetCore
             loop = loop.Remove(loop.IndexOf("</BLOX::Loop::BLOXColumns>"));
 
             List<KeyValuePair<string, string>> columns = getColumns(cbTables.Text);
-            string columnsManipulates = string.Empty;
+            StringBuilder columnsManipulates = new StringBuilder();
             foreach (var column in columns)
             {
                 if (isNotStandardColumns(column.Key))
                 {
                     if (isPrimaryKeyColumn(column.Key, cbTables.Text))
                     {
-                        string annotation = "[System.ComponentModel.DataAnnotations.Key]";
-                        columnsManipulates += annotation + "\r\n";
-                        columnsManipulates += "[DefaultValue(\"\")]"+ "\r\n";
-                        columnsManipulates += (loop.Replace("BLOXColumnName", column.Key).Replace("BLOXColumnType", GetClrType(column.Value)) + " = Guid.Empty;");
+                        columnsManipulates.AppendLine("[System.ComponentModel.DataAnnotations.Key]");
+                        columnsManipulates.AppendLine("[DefaultValue(\"\")]");
+                        columnsManipulates.AppendLine((loop.Replace("BLOXColumnName", column.Key).Replace("BLOXColumnType", GetClrType(column.Value)) + " = Guid.Empty;"));
                     }
                     else
                     {
-                        columnsManipulates += loop.Replace("BLOXColumnName", column.Key).Replace("BLOXColumnType", GetClrType(column.Value));
+                        columnsManipulates.AppendLine(loop.Replace("BLOXColumnName", column.Key).Replace("BLOXColumnType", GetClrType(column.Value)));
                     }
                 }
             }
@@ -120,7 +119,7 @@ namespace Ardin.CodeGenerator.AspNetCore
             retVal = retVal.Replace("BLOXTableName", cbTables.Text);
             retVal = retVal.Replace("BLOXNameSpace", txtNamespace.Text);
             retVal = retVal.Replace("BLOXPrefix", txtPrefix.Text);
-            retVal = retVal.Replace(loop, columnsManipulates);
+            retVal = retVal.Replace(loop, columnsManipulates.ToString());
             retVal = retVal.Replace("<BLOX::Loop::BLOXColumns>", string.Empty);
             retVal = retVal.Replace("</BLOX::Loop::BLOXColumns>", string.Empty);
             return retVal;
