@@ -1,0 +1,50 @@
+﻿using @ArdinNamespace.Data;
+using @ArdinNamespace.Model;
+using @ArdinNamespace.Service;
+using Gridify;
+using Gridify.Syntax;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using MongoDB.Driver;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace @ArdinNamespace.Controllers
+{
+    [Route("api/[controller]/[action]")]
+    [ApiController]
+    public class @ArdinModelNameController : ControllerBase
+    {
+        private readonly @ArdinModelService _service;
+        public @ArdinModelNameController(@ArdinModelService service)
+        {
+            this._service = service;
+        }
+        [HttpPost]
+        public IActionResult List(GridifyQuery query)
+        {
+            var Items = _service.Collection.AsQueryable().Gridify(query);
+            return Ok(new { Status = true, Items });
+        }
+        [HttpPost]
+        public IActionResult Add([FromBody] @ArdinModel @ArdinModelName)
+        {
+            _service.Collection.InsertOne(@ArdinModelName);
+            return Ok(new { Status = true, @ArdinModelName });
+        }
+        [HttpPost]
+        public IActionResult Update([FromBody] @ArdinModel @ArdinModelName)
+        {
+            _service.Collection.ReplaceOne(a => a.Id == @ArdinModelName.Id, @ArdinModelName);
+            return Ok(new { Status = true, @ArdinModelName});
+        }
+        [HttpPost]
+        public IActionResult Delete([FromBody] IdModel model)
+        {
+            _service.Collection.DeleteOne(a => a.Id == model.Id);
+            return Ok(new { Status = true });
+        }
+    }
+}

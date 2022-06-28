@@ -8,18 +8,16 @@ namespace BLOXNameSpace.Data
     {
         public BLOXPrefixContext(DbContextOptions<BLOXPrefixContext> options) : base(options)
         {
-        public PContext(DbContextOptions<PContext> options) : base(options)
-        {
         }
         public void UpdateOrAdd<TEntity>(TEntity entity, Guid userId)
         {
             if ((entity as IBaseBO).InsertDateTime < DateTime.Now.AddYears(-50))
                 (entity as IBaseBO).InsertDateTime = DateTime.Now;
-            (entity as IBaseBO).UpdateUserAccountId = userId;
+            (entity as IBaseBO).UpdateUserId = userId;
             (entity as IBaseBO).UpdateDateTime = DateTime.Now;
             if ((entity as IBaseBO).ID == Guid.Empty)
             {
-                (entity as IBaseBO).InsertUserAccountId = userId;
+                (entity as IBaseBO).InsertUserId = userId;
                 (entity as IBaseBO).InsertDateTime = DateTime.Now;
                 this.Add(entity);
             }
