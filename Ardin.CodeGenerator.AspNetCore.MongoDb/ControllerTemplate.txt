@@ -9,6 +9,7 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JohnKnoop.MongoRepository;
 using System.Threading.Tasks;
 
 namespace @ArdinNamespace.Controllers
@@ -17,33 +18,33 @@ namespace @ArdinNamespace.Controllers
     [ApiController]
     public class @ArdinModelNameController : ControllerBase
     {
-        private readonly @ArdinModelService _service;
-        public @ArdinModelNameController(@ArdinModelService service)
+        private readonly MongoContext context;
+        public @ArdinModelNameController(MongoContext context)
         {
-            this._service = service;
+            this.context = context;
         }
         [HttpPost]
         public IActionResult List(GridifyQuery query)
         {
-            var Items = _service.Collection.AsQueryable().Gridify(query);
+            var Items = context.GetRepository<@ArdinModel>().Query().Gridify(query);
             return Ok(new { Status = true, Items });
         }
         [HttpPost]
-        public IActionResult Add([FromBody] @ArdinModel @ArdinModelName)
+        public async Task<IActionResult> AddAsync([FromBody] @ArdinModel @ArdinModelName)
         {
-            _service.Collection.InsertOne(@ArdinModelName);
+            await context.GetRepository<@ArdinModel>().InsertAsync(@ArdinModelName);
             return Ok(new { Status = true, @ArdinModelName });
         }
         [HttpPost]
-        public IActionResult Update([FromBody] @ArdinModel @ArdinModelName)
+        public async Task<IActionResult> UpdateAsync([FromBody] @ArdinModel @ArdinModelName)
         {
-            _service.Collection.ReplaceOne(a => a.Id == @ArdinModelName.Id, @ArdinModelName);
-            return Ok(new { Status = true, @ArdinModelName});
+            await context.GetRepository<@ArdinModel>().ReplaceOneAsync(a => a.Id == @ArdinModelName.Id, @ArdinModelName);
+            return Ok(new { Status = true, @ArdinModelName });
         }
         [HttpPost]
-        public IActionResult Delete([FromBody] IdModel model)
+        public async Task<IActionResult> DeleteAsync([FromBody] IdModel model)
         {
-            _service.Collection.DeleteOne(a => a.Id == model.Id);
+            await context.GetRepository<@ArdinModel>().DeleteByIdAsync(model.Id);
             return Ok(new { Status = true });
         }
     }

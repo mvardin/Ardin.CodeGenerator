@@ -46,11 +46,11 @@ namespace Ardin.CodeGenerator.AspNetCore.MongoDb
         }
         private void GenerateService()
         {
-            string templatePath = Application.StartupPath + "\\ServiceTemplate.txt";
+            string templatePath = Application.StartupPath + "\\ContextTemplate.txt";
             string template = File.ReadAllText(templatePath);
             template = template.Replace("@ArdinNamespace", txtNamespace.Text);
             template = template.Replace("@ArdinModel", txtCollectionName.Text);
-            string path = Path.Combine(txtRootPath.Text + "\\Service", txtCollectionName.Text.Remove(0, 1) + "Service.cs");
+            string path = Path.Combine(txtRootPath.Text + "\\Data", "MongoContext.cs");
             File.WriteAllText(path, template);
         }
     }

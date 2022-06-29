@@ -38,14 +38,12 @@ namespace Ardin.CodeGenerator.AspNetCore.MongoDb
             this.txtNamespace = new System.Windows.Forms.TextBox();
             this.cbService = new System.Windows.Forms.CheckBox();
             this.cbController = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtPrefix = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 38);
+            this.label1.Location = new System.Drawing.Point(12, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(99, 15);
             this.label1.TabIndex = 0;
@@ -53,7 +51,7 @@ namespace Ardin.CodeGenerator.AspNetCore.MongoDb
             // 
             // txtCollectionName
             // 
-            this.txtCollectionName.Location = new System.Drawing.Point(117, 35);
+            this.txtCollectionName.Location = new System.Drawing.Point(117, 12);
             this.txtCollectionName.Name = "txtCollectionName";
             this.txtCollectionName.Size = new System.Drawing.Size(513, 23);
             this.txtCollectionName.TabIndex = 1;
@@ -61,7 +59,7 @@ namespace Ardin.CodeGenerator.AspNetCore.MongoDb
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 121);
+            this.label2.Location = new System.Drawing.Point(12, 98);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 15);
             this.label2.TabIndex = 0;
@@ -69,7 +67,7 @@ namespace Ardin.CodeGenerator.AspNetCore.MongoDb
             // 
             // txtRootPath
             // 
-            this.txtRootPath.Location = new System.Drawing.Point(117, 118);
+            this.txtRootPath.Location = new System.Drawing.Point(117, 95);
             this.txtRootPath.Name = "txtRootPath";
             this.txtRootPath.Size = new System.Drawing.Size(513, 23);
             this.txtRootPath.TabIndex = 1;
@@ -77,9 +75,9 @@ namespace Ardin.CodeGenerator.AspNetCore.MongoDb
             // 
             // btnGenerate
             // 
-            this.btnGenerate.Location = new System.Drawing.Point(117, 155);
+            this.btnGenerate.Location = new System.Drawing.Point(117, 132);
             this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(513, 53);
+            this.btnGenerate.Size = new System.Drawing.Size(513, 76);
             this.btnGenerate.TabIndex = 2;
             this.btnGenerate.Text = "Generate";
             this.btnGenerate.UseVisualStyleBackColor = true;
@@ -88,7 +86,7 @@ namespace Ardin.CodeGenerator.AspNetCore.MongoDb
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 67);
+            this.label3.Location = new System.Drawing.Point(12, 44);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(72, 15);
             this.label3.TabIndex = 0;
@@ -96,7 +94,7 @@ namespace Ardin.CodeGenerator.AspNetCore.MongoDb
             // 
             // txtNamespace
             // 
-            this.txtNamespace.Location = new System.Drawing.Point(117, 64);
+            this.txtNamespace.Location = new System.Drawing.Point(117, 41);
             this.txtNamespace.Name = "txtNamespace";
             this.txtNamespace.Size = new System.Drawing.Size(513, 23);
             this.txtNamespace.TabIndex = 1;
@@ -104,38 +102,22 @@ namespace Ardin.CodeGenerator.AspNetCore.MongoDb
             // cbService
             // 
             this.cbService.AutoSize = true;
-            this.cbService.Location = new System.Drawing.Point(117, 93);
+            this.cbService.Location = new System.Drawing.Point(117, 70);
             this.cbService.Name = "cbService";
-            this.cbService.Size = new System.Drawing.Size(113, 19);
+            this.cbService.Size = new System.Drawing.Size(118, 19);
             this.cbService.TabIndex = 3;
-            this.cbService.Text = "Generate Service";
+            this.cbService.Text = "Generate Context";
             this.cbService.UseVisualStyleBackColor = true;
             // 
             // cbController
             // 
             this.cbController.AutoSize = true;
-            this.cbController.Location = new System.Drawing.Point(236, 93);
+            this.cbController.Location = new System.Drawing.Point(236, 70);
             this.cbController.Name = "cbController";
             this.cbController.Size = new System.Drawing.Size(129, 19);
             this.cbController.TabIndex = 3;
             this.cbController.Text = "Generate Controller";
             this.cbController.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 15);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Prefix:";
-            // 
-            // txtPrefix
-            // 
-            this.txtPrefix.Location = new System.Drawing.Point(117, 6);
-            this.txtPrefix.Name = "txtPrefix";
-            this.txtPrefix.Size = new System.Drawing.Size(513, 23);
-            this.txtPrefix.TabIndex = 1;
             // 
             // frmMain
             // 
@@ -147,10 +129,8 @@ namespace Ardin.CodeGenerator.AspNetCore.MongoDb
             this.Controls.Add(this.btnGenerate);
             this.Controls.Add(this.txtRootPath);
             this.Controls.Add(this.txtNamespace);
-            this.Controls.Add(this.txtPrefix);
             this.Controls.Add(this.txtCollectionName);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "frmMain";
@@ -171,8 +151,6 @@ namespace Ardin.CodeGenerator.AspNetCore.MongoDb
         private System.Windows.Forms.TextBox txtNamespace;
         private System.Windows.Forms.CheckBox cbService;
         private System.Windows.Forms.CheckBox cbController;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtPrefix;
     }
 }
 

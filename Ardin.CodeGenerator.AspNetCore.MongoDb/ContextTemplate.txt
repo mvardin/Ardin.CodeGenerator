@@ -1,0 +1,18 @@
+﻿using @ArdinNamespace.Data;
+using JohnKnoop.MongoRepository;
+using Microsoft.Extensions.Options;
+using MongoDB.Driver;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace @ArdinNamespace.Service
+{
+    public class MongoContext : MongoClient
+    {
+        public MongoContext(IOptions<AppSetting> config) : base(config.Value.ConnectionString)
+        {
+        }
+    }
+}
